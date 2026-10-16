@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // base './' => funciona en GitHub Pages (usuario.github.io/repositorio/) sin configurar nada más.
 export default defineConfig({
-  base: './',
+  //base: './',
+  base: '/',
   plugins: [react()],
 });
