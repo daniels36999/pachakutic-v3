@@ -1,0 +1,136 @@
+/* =========================================================
+   RESPONSIVE · mobile first (min-width)
+   Probado en 320 · 375 · 390 · 414 · 768 · 1024 · 1280 · 1440 · 1920
+   ========================================================= */
+
+/* ---------- ≥ 560px ---------- */
+@media (min-width: 560px) {
+  .stats { gap: 16px; }
+  .plan-grid { grid-template-columns: repeat(2, 1fr); }
+  .diagram__groups { grid-template-columns: repeat(2, 1fr); }
+  .pmap { grid-template-columns: repeat(2, 1fr); }
+  .acc__panel p { padding-left: 76px; }
+}
+
+/* ---------- ≥ 700px (tablet) ---------- */
+@media (min-width: 700px) {
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; }
+
+  /* Formación: horizontal */
+  .stepper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .stepper li { padding: 76px 0 0; }
+  .stepper li:not(:last-child)::before { left: 52px; right: -28px; top: 23px; bottom: auto; width: auto; height: 2px; }
+  .stepper__node { left: 0; }
+
+  /* Timeline adaptada: 2 columnas con línea horizontal */
+  .timeline { grid-template-columns: repeat(2, 1fr); column-gap: var(--tl-gap); row-gap: 40px; }
+  .tl-item, .tl-item:last-child { padding: 66px 0 0; }
+  .tl-item::before { left: 52px; right: 0; top: 21px; bottom: auto; width: auto; height: 2px; transform-origin: left; }
+  .js .tl-item::before { transform: scaleX(0); }
+  .js .tl-item.is-visible::before { transform: none; }
+  .tl-item:nth-child(2n)::before { display: none; }
+  .tl-item:last-child::before { display: none; }
+}
+
+/* ---------- ≥ 900px ---------- */
+@media (min-width: 900px) {
+  /* Header en escritorio */
+  .menu-toggle { display: none; }
+  .nav { position: static; display: block; padding: 0; background: none; border: 0; box-shadow: none; }
+  .nav ul { flex-direction: row; gap: 4px; }
+  .nav a { position: relative; min-height: 44px; padding: 0 14px; border: 0; font-size: 0.95rem; }
+  .nav a::after {
+    content: ''; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 3px; border-radius: 3px;
+    background: var(--stripe); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease);
+  }
+  .nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); }
+  .nav a:hover { color: var(--ice); }
+  .nav a.is-active { color: #fff; }
+
+  .hero__grid { grid-template-columns: 1.15fr 0.85fr; gap: 56px; }
+  .hero__photo { width: min(100%, 400px); margin-right: 0; }
+  .hero__badge { width: 104px; height: 104px; left: -34px; }
+  .hero__badge strong { font-size: 2.4rem; }
+
+  .profile { grid-template-columns: 0.8fr 1.2fr; gap: clamp(40px, 6vw, 88px); }
+  .profile__photo { width: 100%; max-width: 380px; margin-inline: 0; }
+
+  .experience { grid-template-columns: 0.7fr 1.3fr; gap: 32px; }
+  .experience__aside { position: sticky; top: calc(var(--header-h) + 24px); }
+
+  /* Roadmap en zig-zag */
+  .rm-step { grid-template-columns: 1fr 64px 1fr; gap: 28px; padding-bottom: 36px; }
+  .rm-step::before { left: 50%; margin-left: -2px; top: 62px; }
+  .rm-step__node { grid-column: 2; grid-row: 1; justify-self: center; }
+  .rm-step__card { grid-row: 1; }
+  .rm-step:nth-child(odd) .rm-step__card { grid-column: 1; text-align: right; }
+  .rm-step:nth-child(even) .rm-step__card { grid-column: 3; }
+  .rm-step:nth-child(even) { margin-top: -28px; }
+  .rm-step:nth-child(even):last-child { margin-top: -28px; }
+
+  .pmap { grid-template-columns: repeat(3, 1fr); }
+  .modal__body { padding: 26px 28px 32px; }
+  .modal__head { padding: 24px 76px 24px 28px; gap: 22px; }
+  .modal__photo { width: 96px; height: 120px; }
+}
+
+/* ---------- ≥ 1000px ---------- */
+@media (min-width: 1000px) {
+  .plan-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  /* Diagrama con abanico SVG */
+  .diagram__root::after, .diagram__target::before { display: none; }
+  .fan { display: block; width: 100%; height: 64px; }
+  .diagram__groups { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .dgroup { padding: 16px 12px; }
+}
+
+/* ---------- ≥ 1100px ---------- */
+@media (min-width: 1100px) {
+  .plan-grid:not(.plan-grid--council) { grid-template-columns: repeat(4, 1fr); }
+
+  /* Organigrama horizontal */
+  .org__branches { display: flex; justify-content: center; gap: 0; max-width: none; }
+  .org__branch { display: flex; flex-direction: column; align-items: center; padding: 28px 18px 0; }
+  .org__branch::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 2px; border-radius: 0; background: rgba(22, 38, 63, 0.3); }
+  .org__branch:first-child::before { left: 50%; }
+  .org__branch:last-child::before { right: 50%; }
+  .org__branch::after { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 28px; margin-left: -1px; background: rgba(22, 38, 63, 0.3); }
+  .org__leaves { position: relative; display: flex; justify-content: center; gap: 0; margin-top: 0; padding-top: 28px; }
+  .org__leaves::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 28px; margin-left: -1px; background: rgba(22, 38, 63, 0.3); }
+  .org__leaves li { padding: 28px 7px 0; }
+  .org__leaves li::before { left: 0; right: 0; top: 0; width: auto; height: 2px; }
+  .org__leaves li:first-child::before { left: 50%; }
+  .org__leaves li:last-child::before { right: 50%; }
+  .org__leaves li:only-child::before { display: none; }
+  .org__leaves li::after { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 28px; margin-left: -1px; background: rgba(22, 38, 63, 0.3); }
+  .org__node--leaf { max-width: 210px; }
+}
+
+/* ---------- ≥ 1180px: timeline horizontal de 7 hitos ---------- */
+@media (min-width: 1180px) {
+  .timeline { grid-template-columns: repeat(7, 1fr); column-gap: var(--tl-gap); row-gap: 0; --tl-gap: 20px; }
+  .tl-item::before { right: calc(-1 * var(--tl-gap)); }
+  .tl-item:nth-child(2n)::before { display: block; }
+  .tl-item:last-child::before { display: none; }
+  .tl-item h3 { font-size: 1rem; }
+  .tl-item__text { font-size: 0.82rem; }
+}
+
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+  :root { --maxw: 1320px; }
+}
+
+/* ---------- Teléfonos pequeños (≤ 360px) ---------- */
+@media (max-width: 380px) {
+  .brand__text small { display: none; }
+  .btn { padding: 0 18px; }
+  .hero__badge { width: 80px; height: 80px; left: -8px; }
+  .hero__badge strong { font-size: 1.8rem; }
+  .acc__btn { grid-template-columns: 40px 1fr 20px; gap: 10px; padding: 12px; }
+  .acc__icon { width: 40px; height: 40px; }
+  .cgroup__count { margin-left: 0; }
+}
